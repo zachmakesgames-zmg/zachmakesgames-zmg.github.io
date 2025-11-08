@@ -1,0 +1,212 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #2c3e50 0%, #3d5a6c 100%);
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#game-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameCanvas {
+    display: block;
+    background: #4a5f6f;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* HUD */
+#hud {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+#glyph-display {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.glyph-indicator {
+    background: rgba(40, 50, 60, 0.85);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 100px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.glyph-indicator.active {
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+    background: rgba(60, 70, 80, 0.95);
+}
+
+.glyph-symbol {
+    font-size: 24px;
+    color: #aaa;
+}
+
+.glyph-indicator.active .glyph-symbol {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.glyph-count {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Touch Controls */
+#touch-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    z-index: 10;
+    display: none;
+}
+
+#joystick-area {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    position: relative;
+}
+
+/* Screens */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(20, 30, 40, 0.95);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.screen.active {
+    display: flex;
+}
+
+#intro-screen h1 {
+    font-size: 4rem;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    font-weight: normal;
+}
+
+#intro-screen p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #bbb;
+}
+
+#intro-screen .subtitle {
+    font-style: italic;
+    margin-bottom: 40px;
+    color: #888;
+}
+
+#start-button {
+    background: linear-gradient(135deg, #5a7a8f 0%, #3d5a6c 100%);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: 'Georgia', serif;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+#start-button:hover {
+    background: linear-gradient(135deg, #6a8a9f 0%, #4d6a7c 100%);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+#start-button:active {
+    transform: scale(0.95);
+}
+
+.controls-info {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.controls-info p {
+    margin: 5px 0;
+}
+
+/* Mobile specific */
+@media (max-width: 768px) {
+    #touch-controls {
+        display: block;
+    }
+
+    #intro-screen h1 {
+        font-size: 3rem;
+        letter-spacing: 5px;
+    }
+
+    #intro-screen p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #intro-screen h1 {
+        font-size: 2rem;
+    }
+
+    .glyph-indicator {
+        padding: 8px 12px;
+        min-width: 80px;
+    }
+
+    .glyph-symbol {
+        font-size: 20px;
+    }
+
+    .glyph-count {
+        font-size: 12px;
+    }
+}
