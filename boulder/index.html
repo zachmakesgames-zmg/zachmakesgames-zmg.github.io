@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Boulder - A Journey Through Stone</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="hud">
+            <div id="glyph-display">
+                <div class="glyph-indicator" data-glyph="circle">
+                    <span class="glyph-symbol">◯</span>
+                    <span class="glyph-count">0/5</span>
+                </div>
+                <div class="glyph-indicator" data-glyph="triangle">
+                    <span class="glyph-symbol">△</span>
+                    <span class="glyph-count">0/5</span>
+                </div>
+                <div class="glyph-indicator" data-glyph="square">
+                    <span class="glyph-symbol">□</span>
+                    <span class="glyph-count">0/5</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="touch-controls">
+            <div id="joystick-area"></div>
+        </div>
+
+        <div id="intro-screen" class="screen active">
+            <h1>BOULDER</h1>
+            <p>Guide a stone boulder through an ancient maze</p>
+            <p class="subtitle">Collect glyphs, befriend other boulders, find your path</p>
+            <button id="start-button">Begin Journey</button>
+            <div class="controls-info">
+                <p>🎮 Mobile: Touch and drag to roll</p>
+                <p>⌨️ Desktop: Arrow keys or WASD</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core game engine -->
+    <script src="js/utils.js"></script>
+    <script src="js/physics.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/particles.js"></script>
+
+    <!-- Game objects -->
+    <script src="js/boulder.js"></script>
+    <script src="js/glyph.js"></script>
+    <script src="js/environment.js"></script>
+    <script src="js/ai-boulder.js"></script>
+    <script src="js/enemy-block.js"></script>
+
+    <!-- Level and game management -->
+    <script src="js/level.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
